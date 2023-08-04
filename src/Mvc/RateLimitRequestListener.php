@@ -26,8 +26,6 @@ use Zend\Mvc\MvcEvent;
 use Zend\Http\Response as HttpResponse;
 use Zend\Http\Request as HttpRequest;
 use Zend\Router\RouteMatch;
-use ZF\ApiProblem\ApiProblem;
-use ZF\ApiProblem\ApiProblemResponse;
 
 /**
  * RateLimitRequestListener
@@ -107,9 +105,9 @@ class RateLimitRequestListener extends AbstractListenerAggregate
         } catch (TooManyRequestsHttpException $exception) {
 
             // Generate a new response
-            $response = new ApiProblemResponse(
-                new ApiProblem(429, $exception->getMessage())
-            );
+            $response = new HttpResponse();
+            $response->setStatusCode(429);
+            $response->setContent($exception->getMessage());
 
             // Add the headers so clients will know when they can try again
             $this->ensureHeaders($response);
