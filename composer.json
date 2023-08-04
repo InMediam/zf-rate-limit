@@ -1,6 +1,6 @@
 {
     "name": "inmediam/zf-rate-limit",
-    "description": "A Zend Framework 2 module that lets you define rate limits for your routes.",
+    "description": "A Zend Framework module that lets you define rate limits for your routes.",
     "keywords": ["zf2", "zf3-mvc", "zend framework", "rate limit", "throttle", "API rate limit", "apigility"],
     "homepage": "https://github.com/inmediam/zf-rate-limit",
     "type": "library",
